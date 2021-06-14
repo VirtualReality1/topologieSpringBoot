@@ -7,11 +7,11 @@
 <h1 th:text="${title}"> Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 <ul>
-    <li th:each="hardware: ${hardwares}">
-        <a th:href = " '/hardware/view/' + ${hardware.id}" th:text="${hardware.name}" ></a>
+    <li th:each="field: ${fields}">
+        <a th:href = " '/field/view/' + ${field.id}" th:text="${field.name}" ></a>
     </li>
 </ul>
 
-<p><a href="/field/add"> Add Hardware</a></p>
+<p><a href="/field/add"> Add Field</a></p>
 </body>
 </html>

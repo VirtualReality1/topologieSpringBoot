@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace = "fragments :: head"></head>
@@ -7,11 +5,11 @@
 <h1 th:text="${title}"> Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 <ul>
-    <li th:each="hardware: ${hardwares}">
-        <a th:href = " '/hardware/view/' + ${hardware.id}" th:text="${hardware.name}" ></a>
+    <li th:each="segment: ${segments}">
+        <a th:href = " '/segment/view/' + ${segment.id}" th:text="${segment.name}" ></a>
     </li>
 </ul>
 
-<p><a href="/field/add"> Add Hardware</a></p>
+<p><a href="/segment/add"> Add Segment</a></p>
 </body>
 </html>
