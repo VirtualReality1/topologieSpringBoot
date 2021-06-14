@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace = "fragments :: head"></head>
+<body class ="container">
+<h1 th:text="${title}"> Default Title</h1>
+<nav th:replace="fragments :: navigation"></nav>
+<ul>
+    <li th:each="hardware: ${hardwares}" th:text ="${hardware.name}"></li>
+</ul>
+
+<p th:unless = "${hardwares.size()}"><i>No hardwares yet</i></p>
+<p><a th:href="'/software/add-item/' + ${softwareId}"> Add Hardware</a></p>
+
+</body>
+</html>

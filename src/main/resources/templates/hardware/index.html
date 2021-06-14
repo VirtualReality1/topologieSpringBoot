@@ -1,0 +1,17 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace = "fragments :: head"></head>
+<body class ="container">
+<h1 th:text="${title}"> Default Title</h1>
+<nav th:replace="fragments :: navigation"></nav>
+<ul>
+    <li th:each="hardware: ${hardwares}">
+        <a th:href = " '/hardware/view/' + ${hardware.id}" th:text="${hardware.name}" ></a>
+    </li>
+</ul>
+
+<p><a href="/hardware/add"> Add Hardware</a></p>
+</body>
+</html>
