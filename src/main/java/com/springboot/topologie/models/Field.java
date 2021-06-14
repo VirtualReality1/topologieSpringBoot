@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Hardware {
+public class Field {
 
     @Id
     @GeneratedValue
@@ -16,19 +16,15 @@ public class Hardware {
     @Size(min = 3, max = 15)
     private String name;
 
-    @NotNull
-    @Size(min = 3, message = "IP must not be empty")
-    private String ip;
 
-    @ManyToMany (mappedBy = "hardwares")
-    private List<Software> softwares;
+    @ManyToMany (mappedBy = "fields")
+    private List<Segment> segments;
 
-    public Hardware(String ip, String name) {
-    this.name = name;
-    this.ip = ip;
+    public Field(String name) {
+        this.name = name;
     }
 
-    public Hardware(){}
+    public Field(){}
 
 
     public int getId() {
@@ -43,8 +39,8 @@ public class Hardware {
         this.name = name;
     }
 
-    public List<Software> getSoftware() {
-        return softwares;
+    public List<Segment> getSegments() {
+        return segments;
     }
 
 }

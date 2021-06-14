@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace = "fragments :: head"></head>
+<body class ="container">
+<h1 th:text="${title}"> Default Title</h1>
+<nav th:replace="fragments :: navigation"></nav>
+<form method = "post" th:object = "${form}" action="/segment/add-item">
+    <div class = "form-group">
+        <label th:for="fieldId">SegmentField</label>
+        <label>
+            <select name ="fieldId">
+                <option th:each="field : *{fields}"
+                        th:text="${field.name}"
+                        th:value ="${field.id}"></option>
+            </select>
+        </label>
+    </div>
+
+    <!--Hidden Segment Id the field should be added to -->
+    <input type="hidden" name="segmentId" th:value="*{segment.id}"/>
+    <input type="submit" value="Add Item"/>
+</form>
+</body>
