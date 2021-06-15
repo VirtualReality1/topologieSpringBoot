@@ -17,6 +17,18 @@ public class Software {
     @Size(min = 3, max = 15)
     private String name;
 
+    @NotNull
+    @Size(min = 3, max = 15)
+    private String version;
+
+    @NotNull
+    @Size(min = 3, max = 15)
+    private String OsName;
+
+    @NotNull
+    @Size(min = 3, max = 15)
+    private String OsVersion;
+
     @OneToMany(mappedBy = "software")
     private List<Communication> communication;
 

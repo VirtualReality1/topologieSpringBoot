@@ -16,6 +16,10 @@ public class Communication {
     @Size(min=3, max=15)
     private String name;
 
+    @NotNull
+    @Size(min=3, max=15)
+    private int partnerSoftwareId;
+
 
     @ManyToMany
     private List<Comtype> comtypes;
@@ -35,7 +39,7 @@ public class Communication {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name="com_tr_trigger",
     joinColumns = {@JoinColumn(name = "communication_id", referencedColumnName = "id")}, inverseJoinColumns =
-            {@JoinColumn(name = "tr_trigger_id", referencedColumnName = "id")})
+                  {@JoinColumn(name = "tr_trigger_id", referencedColumnName = "id")})
     private TrTrigger trigger;
 
     public Long getId() {
@@ -55,4 +59,8 @@ public class Communication {
     }
 
     public Communication () {}
+
+    public int getPartnerSoftwareId() {
+        return partnerSoftwareId;
+    }
 }

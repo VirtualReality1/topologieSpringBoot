@@ -16,7 +16,11 @@ public class TrTrigger {
     @Size(min=3, max=15)
     private String name;
 
-    @OneToOne(mappedBy = "trigger", optional = true)
+    @NotNull
+    @Size(min=3, max=15)
+    private String action;
+
+    @OneToOne(mappedBy = "trigger")
     private Communication communication;
 
     public int getId() {
@@ -36,4 +40,20 @@ public class TrTrigger {
     }
 
     public TrTrigger(){}
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public Communication getCommunication() {
+        return communication;
+    }
+
+    public void setCommunication(Communication communication) {
+        this.communication = communication;
+    }
 }

@@ -16,6 +16,10 @@ public class Channel {
     @Size(min = 3, max = 15)
     private String name;
 
+    @NotNull
+    @Size(min = 3, max = 15)
+    private String version;
+
     @OneToMany(mappedBy = "channel")
     private List<Communication> communication;
 
@@ -36,4 +40,23 @@ public class Channel {
         this.name = name;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public List<Communication> getCommunication() {
+        return communication;
+    }
+
+    public void setCommunication(List<Communication> communication) {
+        this.communication = communication;
+    }
 }

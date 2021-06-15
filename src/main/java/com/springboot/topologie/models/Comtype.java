@@ -16,6 +16,10 @@ public class Comtype {
     @Size(min = 3, max = 15)
     private String name;
 
+    @NotNull
+    @Size(min = 3, max = 15)
+    private String type;
+
     @ManyToMany(mappedBy = "comtypes")
     private List<Communication> communications;
 
