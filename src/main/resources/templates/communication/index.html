@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace = "fragments :: head"></head>
@@ -7,8 +5,8 @@
 <h1 th:text="${title}"> Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 <ul>
-    <li th:each="comtype: ${comtypes}">
-        <a th:href = " '/comtype/view/' + ${comtype.id}" th:text="${comtype.name}" ></a>
+    <li th:each="communication: ${communications}">
+        <a th:text="${communication.name}" ></a>
     </li>
 </ul>
 

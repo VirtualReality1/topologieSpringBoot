@@ -1,9 +1,11 @@
 package com.springboot.topologie.controllers;
 
-import com.springboot.topologie.models.Channel;
-import com.springboot.topologie.models.Comtype;
+import com.springboot.topologie.models.*;
 import com.springboot.topologie.models.data.ChannelDAO;
 import com.springboot.topologie.models.data.ComTypeDAO;
+import com.springboot.topologie.models.data.CommunicationDAO;
+import com.springboot.topologie.models.forms.AddComTypeItemForm;
+import com.springboot.topologie.models.forms.AddFieldItemForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -19,6 +21,9 @@ public class ComtypeController {
 
     @Autowired
     ComTypeDAO comtypeDao;
+
+    @Autowired
+    CommunicationDAO communicationDAO;
 
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -48,7 +53,34 @@ public class ComtypeController {
     public String viewComtype(Model model, @PathVariable int comtypeId) {
         Comtype comtype = comtypeDao.findById(comtypeId).orElse(null);
         model.addAttribute("title", comtype.getName());
+        model.addAttribute("communcations", comtype.getCommunications());
         model.addAttribute("comtypeId", comtype.getId());
         return "comtype/view";
+    }
+
+    @RequestMapping (value= "add-item/{comtypeId}", method = RequestMethod.GET)
+    public String addItem(Model model, @PathVariable int comtypeId){
+        Comtype comtype = comtypeDao.findById(comtypeId).orElse(null);
+        AddComTypeItemForm form = new AddComTypeItemForm(
+                communicationDAO.findAll(), comtype);
+        model.addAttribute("title", "Add item to comtype: " + comtype.getName());
+        model.addAttribute("form", form);
+        return "comtype/add-item";
+    }
+
+    @RequestMapping (value = "add-item", method = RequestMethod.POST)
+    public String addItem(Model model, @ModelAttribute @Valid AddComTypeItemForm form, Errors errors){
+
+        if(errors.hasErrors()){
+            model.addAttribute("form", form);
+            return "comtype/add-item";
+        }
+
+        Communication theCommunication = communicationDAO.findById(form.getCommunicationId()).orElse(null);
+        Comtype theComtype = comtypeDao.findById(form.getComtypeId()).orElse(null);
+        theComtype.addItem(theCommunication);
+        comtypeDao.save(theComtype);
+
+        return "redirect:/comtype/view/" + theComtype.getId();
     }
 }

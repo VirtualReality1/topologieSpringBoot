@@ -60,6 +60,16 @@ public class Communication {
 
     public Communication () {}
 
+    public void addItem(Comtype item) {
+        if(!comtypes.contains(item)){
+            comtypes.add(item);
+        }
+    }
+
+    public List<Comtype> getComtypes() {
+        return comtypes;
+    }
+
     public int getPartnerSoftwareId() {
         return partnerSoftwareId;
     }

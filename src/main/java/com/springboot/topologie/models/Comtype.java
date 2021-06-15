@@ -43,4 +43,13 @@ public class Comtype {
         this.name = name;
     }
 
+    public List<Communication> getCommunications() {
+        return communications;
+    }
+
+    public void addItem(Communication item) {
+        if(!communications.contains(item)){
+            communications.add(item);
+        }
+    }
 }
