@@ -1,12 +1,12 @@
 package com.springboot.topologie.models;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Field {
+public class Comtype {
 
     @Id
     @GeneratedValue
@@ -16,20 +16,15 @@ public class Field {
     @Size(min = 3, max = 15)
     private String name;
 
+    @ManyToMany(mappedBy = "comtypes")
+    private List<Communication> communications;
 
-    @ManyToMany (mappedBy = "fields")
-    private List<Segment> segments;
+    @OneToMany(mappedBy = "comtype")
+    private List<Messagetype> messagetype;
 
-    public Field(String name) {
+    public Comtype(){}
+    public Comtype(String name) {
         this.name = name;
-    }
-
-    public Field(){}
-
-    public void addItem(Segment item) {
-        if(!segments.contains(item)){
-            segments.add(item);
-        }
     }
 
     public int getId() {
@@ -42,10 +37,6 @@ public class Field {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Segment> getSegments() {
-        return segments;
     }
 
 }

@@ -31,6 +31,12 @@ public class Hardware {
     public Hardware(){}
 
 
+    public void addItem(Software item) {
+        if(!softwares.contains(item)){
+            softwares.add(item);
+        }
+    }
+
     public int getId() {
         return id;
     }
@@ -43,7 +49,7 @@ public class Hardware {
         this.name = name;
     }
 
-    public List<Software> getSoftware() {
+    public List<Software> getSoftwares() {
         return softwares;
     }
 

@@ -17,6 +17,9 @@ public class Software {
     @Size(min = 3, max = 15)
     private String name;
 
+    @OneToMany(mappedBy = "software")
+    private List<Communication> communication;
+
     @ManyToMany
     private List<Hardware> hardwares;
 
