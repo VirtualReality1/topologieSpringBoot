@@ -31,7 +31,7 @@ public class FieldController {
     }
 
     @RequestMapping(value = "add", method=RequestMethod.GET)
-    public String displayAddHardwareForm(Model model){
+    public String displayAddFieldForm(Model model){
         model.addAttribute("title", "Add Field");
         model.addAttribute(new Field());
         return "field/add";
