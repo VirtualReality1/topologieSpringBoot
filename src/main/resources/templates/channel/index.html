@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace = "fragments :: head"></head>
@@ -5,9 +7,11 @@
 <h1 th:text="${title}"> Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 <ul>
-    <li th:each="segment: ${segments}" th:text ="${segment.name}"></li>
+    <li th:each="channel: ${channels}">
+        <a th:href = " '/channel/view/' + ${channel.id}" th:text="${channel.name}" ></a>
+    </li>
 </ul>
-<p th:unless = "${segments.size()}"><i>No segments yet</i></p>
-<p><a th:href="'/field/add-item/' + ${fieldId}"> Add Segment</a></p>
+
+<p><a href="/channel/add"> Add Channel</a></p>
 </body>
 </html>

@@ -1,9 +1,6 @@
 package com.springboot.topologie.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -18,6 +15,10 @@ public class Segment {
     @NotNull
     @Size(min=3, max=15)
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name="messagetype_id", referencedColumnName = "id")
+    private Messagetype messagetype;
 
     @ManyToMany
     private List<Field> fields;

@@ -17,6 +17,14 @@ public class Hardware {
     private String name;
 
     @NotNull
+    @Size(min = 3, max = 15)
+    private String version;
+
+    @NotNull
+    @Size(min = 3, max = 15)
+    private String type;
+
+    @NotNull
     @Size(min = 3, message = "IP must not be empty")
     private String ip;
 
@@ -31,6 +39,12 @@ public class Hardware {
     public Hardware(){}
 
 
+    public void addItem(Software item) {
+        if(!softwares.contains(item)){
+            softwares.add(item);
+        }
+    }
+
     public int getId() {
         return id;
     }
@@ -43,8 +57,39 @@ public class Hardware {
         this.name = name;
     }
 
-    public List<Software> getSoftware() {
+    public List<Software> getSoftwares() {
         return softwares;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public void setSoftwares(List<Software> softwares) {
+        this.softwares = softwares;
+    }
 }

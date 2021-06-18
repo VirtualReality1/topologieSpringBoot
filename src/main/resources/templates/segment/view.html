@@ -8,7 +8,7 @@
     <li th:each="field: ${fields}" th:text ="${field.name}"></li>
 </ul>
 
-<p th:unless = "${fields.size()}"><i>No segment fields yet</i></p>
+<p th:unless = "${fields.size()}"><i>No fields yet</i></p>
 <p><a th:href="'/segment/add-item/' + ${segmentId}"> Add Field</a></p>
 
 </body>

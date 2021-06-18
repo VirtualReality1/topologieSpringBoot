@@ -5,9 +5,10 @@
 <h1 th:text="${title}"> Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 <ul>
-    <li th:each="segment: ${segments}" th:text ="${segment.name}"></li>
+    <li th:each="communication: ${communications}">
+        <a th:text="${communication.name}" ></a>
+    </li>
 </ul>
-<p th:unless = "${segments.size()}"><i>No segments yet</i></p>
-<p><a th:href="'/field/add-item/' + ${fieldId}"> Add Segment</a></p>
+
 </body>
 </html>

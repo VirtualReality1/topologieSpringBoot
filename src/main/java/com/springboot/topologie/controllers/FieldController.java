@@ -1,11 +1,10 @@
 package com.springboot.topologie.controllers;
 
 import com.springboot.topologie.models.Field;
-import com.springboot.topologie.models.Hardware;
-import com.springboot.topologie.models.Software;
+import com.springboot.topologie.models.Segment;
 import com.springboot.topologie.models.data.FieldDAO;
-import com.springboot.topologie.models.data.HardwareDAO;
-import com.springboot.topologie.models.forms.AddSoftwareItemForm;
+import com.springboot.topologie.models.data.SegmentDAO;
+import com.springboot.topologie.models.forms.AddFieldItemForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -14,14 +13,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 
 @Controller
 @RequestMapping (value = "field")
 public class FieldController {
-    // static ArrayList<String> hardwares = new ArrayList<>();
     @Autowired
     FieldDAO fieldDAO;
+
+    @Autowired
+    SegmentDAO segmentDAO;
 
     @RequestMapping (value = "")
     public String index(Model model){
@@ -31,7 +31,7 @@ public class FieldController {
     }
 
     @RequestMapping(value = "add", method=RequestMethod.GET)
-    public String displayAddHardwareForm(Model model){
+    public String displayAddFieldForm(Model model){
         model.addAttribute("title", "Add Field");
         model.addAttribute(new Field());
         return "field/add";
@@ -51,11 +51,45 @@ public class FieldController {
     public String viewField(Model model, @PathVariable int fieldId){
         Field field = fieldDAO.findById(fieldId).orElse(null);
         model.addAttribute("title", field.getName());
+        model.addAttribute("segments",field.getSegments());
         model.addAttribute("fieldId", field.getId());
         return "field/view";
     }
 
+//    @RequestMapping (value = "view/{fieldId}", method = RequestMethod.GET)
+//    public String viewField(Model model, @PathVariable int fieldId){
+//        Field field = fieldDAO.findById(fieldId).orElse(null);
+//        model.addAttribute("title", field.getName());
+//        model.addAttribute("segments",field.getSegments());
+//        model.addAttribute("fieldId", field.getId());
+//        return "field/view";
+//    }
 
+    @RequestMapping (value= "add-item/{fieldId}", method = RequestMethod.GET)
+    public String addItem(Model model, @PathVariable int fieldId){
+        Field field = fieldDAO.findById(fieldId).orElse(null);
+        AddFieldItemForm form = new AddFieldItemForm(
+                segmentDAO.findAll(), field);
+        model.addAttribute("title", "Add item to field: " + field.getName());
+        model.addAttribute("form", form);
+        return "field/add-item";
+    }
+
+    @RequestMapping (value = "add-item", method = RequestMethod.POST)
+    public String addItem(Model model, @ModelAttribute @Valid AddFieldItemForm form, Errors errors){
+
+        if(errors.hasErrors()){
+            model.addAttribute("form", form);
+            return "field/add-item";
+        }
+
+        Segment theSegment = segmentDAO.findById(form.getSegmentId()).orElse(null);
+        Field theField = fieldDAO.findById(form.getFieldId()).orElse(null);
+        theField.addItem(theSegment);
+        fieldDAO.save(theField);
+
+        return "redirect:/field/view/" + theField.getId();
+    }
 
 //
 //    @RequestMapping(method = RequestMethod.POST,value="/add")

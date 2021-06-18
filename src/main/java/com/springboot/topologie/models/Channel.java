@@ -1,13 +1,12 @@
 package com.springboot.topologie.models;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.persistence.*;
 import java.util.List;
 
-
 @Entity
-public class Software {
+public class Channel {
 
     @Id
     @GeneratedValue
@@ -21,29 +20,13 @@ public class Software {
     @Size(min = 3, max = 15)
     private String version;
 
-    @NotNull
-    @Size(min = 3, max = 15)
-    private String OsName;
-
-    @NotNull
-    @Size(min = 3, max = 15)
-    private String OsVersion;
-
-    @OneToMany(mappedBy = "software")
+    @OneToMany(mappedBy = "channel")
     private List<Communication> communication;
 
-    @ManyToMany
-    private List<Hardware> hardwares;
-
-    public Software() {
+    public Channel(){}
+    public Channel(String name) {
+        this.name = name;
     }
-
-    public void addItem(Hardware item) {
-        if(!hardwares.contains(item)){
-            hardwares.add(item);
-        }
-    }
-
 
     public int getId() {
         return id;
@@ -57,9 +40,23 @@ public class Software {
         this.name = name;
     }
 
-    public List<Hardware> getHardwares() {
-        return hardwares;
+    public void setId(int id) {
+        this.id = id;
     }
 
+    public String getVersion() {
+        return version;
+    }
 
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public List<Communication> getCommunication() {
+        return communication;
+    }
+
+    public void setCommunication(List<Communication> communication) {
+        this.communication = communication;
+    }
 }
