@@ -23,6 +23,10 @@ public class Software {
 
     @NotNull
     @Size(min = 3, max = 15)
+    private String type;
+
+    @NotNull
+    @Size(min = 3, max = 15)
     private String OsName;
 
     @NotNull
@@ -35,7 +39,12 @@ public class Software {
     @ManyToMany
     private List<Hardware> hardwares;
 
-    public Software() {
+    public Software()  {
+
+    }
+
+    private String getSoftwareName() {
+        return name;
     }
 
     public void addItem(Hardware item) {
@@ -43,7 +52,6 @@ public class Software {
             hardwares.add(item);
         }
     }
-
 
     public int getId() {
         return id;
@@ -62,4 +70,51 @@ public class Software {
     }
 
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getOsName() {
+        return OsName;
+    }
+
+    public void setOsName(String osName) {
+        OsName = osName;
+    }
+
+    public String getOsVersion() {
+        return OsVersion;
+    }
+
+    public void setOsVersion(String osVersion) {
+        OsVersion = osVersion;
+    }
+
+    public List<Communication> getCommunication() {
+        return communication;
+    }
+
+    public void setCommunication(List<Communication> communication) {
+        this.communication = communication;
+    }
+
+    public void setHardwares(List<Hardware> hardwares) {
+        this.hardwares = hardwares;
+    }
 }
