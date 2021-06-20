@@ -53,6 +53,11 @@ public class Software {
         return name;
     }
 
+    public String getPumlName() {
+        return "object : "
+                + name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

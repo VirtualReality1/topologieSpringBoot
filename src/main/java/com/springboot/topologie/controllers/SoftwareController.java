@@ -58,7 +58,9 @@ public class SoftwareController {
         model.addAttribute("title", software.getName());
         model.addAttribute("hardwares", software.getHardwares());
         model.addAttribute("softwareId", software.getId());
-
+        // model
+        String content = "@startuml" + "\n" + software.getPumlName() + "\n" +"@enduml";
+        model.addAttribute("plantuml", content);
         return "software/view";
     }
 
