@@ -16,10 +16,10 @@ communication_2 --|> 1
 KommServer --|> communication_4
 communication_4 --|> 3
 KommServer : ID : 0
-KommServer : Name : Mirth
-KommServer : Version : 2.0
-KommServer : OS : Windows Server 2020
-KommServer : IP : 172.17.233.138
+KommServer : Name: Mirth
+KommServer : Version :2.0
+KommServer : OS: Windows Server 2020
+KommServer : IP: 172.17.233.138
 object LIS
 object communication_3
 communication_3 : Name : ORM
@@ -27,20 +27,20 @@ communication_3 : ID : 2
 LIS --|> communication_3
 communication_3 --|> 0
 LIS : ID : 1
-LIS : Name : IXSERV
-LIS : Version : 1,5
-LIS : OS : Windows Server 2020
-LIS : IP : 172.17.233.136
+LIS : Name: IXSERV
+LIS : Version :1,5
+LIS : OS: Windows Server 2020
+LIS : IP: 172.17.233.136
 object CMS
 CMS : ID : 2
-CMS : Name : Hydmedia
-CMS : Version : 15
-CMS : OS : Windows Server 2020
-CMS : IP : 172.17.233.60
+CMS : Name: Hydmedia
+CMS : Version :15
+CMS : OS: Windows Server 2020
+CMS : IP: 172.17.233.60
 object CIS
 CIS : ID : 3
-CIS : Name : Cardiobase
-CIS : Version : 8
-CIS : OS : Windows Server 2020
-CIS : IP : 172.17.233.30
+CIS : Name: Cardiobase
+CIS : Version :8
+CIS : OS: Windows Server 2020
+CIS : IP: 172.17.233.30
 @enduml

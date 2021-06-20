@@ -1,5 +1,6 @@
 package com.springboot.topologie.controllers;
 
+import com.springboot.topologie.models.Communication;
 import com.springboot.topologie.models.Hardware;
 import com.springboot.topologie.models.Software;
 import com.springboot.topologie.models.UMLCreator;
@@ -43,7 +44,13 @@ public class SoftwareController {
 
 //    @RequestMapping(value ="")
 //    public String index2(Model model) throws IOException {
+//
 //        List<Software> software = softwareDAO.findAll();
+//        for(Software s: software){
+//            for (Communication c: s.getCommunication()) {
+//                c.setPartner(softwareDAO.findById(c.getPartnerSoftwareId()).orElse(null));
+//            }
+//        }
 //            String puml = umlCreator.buildContent(software);
 //            umlCreator.generateContentAsPuml(puml);
 //            return puml; // Set Breakpoint for Debugging here to check return in postman
@@ -69,14 +76,18 @@ public class SoftwareController {
     }
 
     @RequestMapping (value = "view/{softwareId}", method = RequestMethod.GET)
-    public String viewSoftware(Model model, @PathVariable Long softwareId){
+    public String viewSoftware(Model model, @PathVariable Long softwareId) throws IOException {
+           List<Software> softwareList = softwareDAO.findAll();
+
         Software software = softwareDAO.findById(softwareId).orElse(null);
         model.addAttribute("title", software.getName());
         model.addAttribute("hardwares", software.getHardwares());
         model.addAttribute("softwareId", software.getId());
         // model
-        String content = "@startuml" + "\n" + software.getPumlName() + "\n" +"@enduml";
+        String content =  umlCreator.buildContent(softwareList);
+        umlCreator.generateContentAsPuml(content);
         model.addAttribute("plantuml", content);
+      //  umlCreator.generatePNGFromPuml(content);
         return "software/view";
     }
 

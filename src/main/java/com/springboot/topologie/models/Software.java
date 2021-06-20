@@ -58,7 +58,8 @@ public class Software {
     }
 
     public String getName() {
-        return name;
+
+        return "Name: "+ name;
     }
 
     public String getPumlName() {
@@ -79,7 +80,7 @@ public class Software {
     }
 
     public String getVersion() {
-        return version;
+        return "Version :" + version;
     }
 
     public void setVersion(String version) {
@@ -91,7 +92,6 @@ public class Software {
     }
 
     public String getType(int partnerID){
-        if (id == partnerID);
         return type;
     }
 
@@ -100,7 +100,7 @@ public class Software {
     }
 
     public String getOsName() {
-        return OsName;
+        return "OS: " + OsName;
     }
 
     public void setOsName(String osName) {

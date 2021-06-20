@@ -8,6 +8,8 @@ import java.util.List;
 @Entity
 @Table(name = "communication")
 public class Communication {
+  //  private Software partner;
+
     @Id
     @GeneratedValue
     private Long id;
@@ -18,7 +20,8 @@ public class Communication {
 
     @NotNull
     @Size(min=3, max=15)
-    private int partnerSoftwareId;
+    private Long partnerSoftwareId;
+
 
 
     @ManyToOne
@@ -66,8 +69,15 @@ public class Communication {
 
     public Communication () {}
 
+//    public void setPartner(Software partner){
+//        this.partner = partner;
+//    }
+//
+//    public Software getPartner(){
+//        return this.partner;
+//    }
 
-    public int getPartnerSoftwareId() {
+    public Long getPartnerSoftwareId() {
         return partnerSoftwareId;
     }
 }

@@ -44,75 +44,13 @@ public class UMLCreator {
                content += c.getName() + " --|> " + c.getPartnerSoftwareId() + "\n";
            }
             content += s.getType() + " : ID : " + s.getId() + "\n";
-            content += s.getType() + " : Name : " + s.getName() + "\n";
-            content += s.getType() + " : Version : " + s.getVersion() + "\n";
-            content += s.getType() + " : OS : " + s.getOsName() + "\n";
+            content += s.getType() + " : " + s.getName() + "\n";
+            content += s.getType() + " : " + s.getVersion() + "\n";
+            content += s.getType() + " : " + s.getOsName() + "\n";
                 for(Hardware h: s.getHardwares()){
-                    content += s.getType() + " : IP : " + h.getIp() + "\n";
+                    content += s.getType() + " : " + h.getIp() + "\n";
                 }
             }
-
-
-
-//        content += "object " + software.getType() + "\n";
-//        content += "object " + software.getType() + "\n";
-//        content += "object " + software.getType() + "\n";
-//        content += "object " + software.getType() + "\n";
-//        content += "object " + "communication_1" + "\n";
-//        content += "object " + "communication_2" + "\n";
-//        content += "object " + "communication_3" + "\n";
-//        content += "object " + "communication_4" + "\n";
-//        content += "object " + "communication_5" + "\n";
-//        content += "communication_1 " + ":" + " Name: " + software.getCommunication()  +"\n";
-//        content += "communication_1 " + ":" + " ID: " + software.getCommunication() + "\n";
-//        content += "communication_2 " + ":" + " Name: " + software.getCommunication() + "\n";
-//        content += "communication_2 " + ":" + " ID: " + software.getCommunication() + "\n";
-//        content += "communication_3 " + ":" + " Name: " + software.getCommunication() + "\n";
-//        content += "communication_3 " + ":" + " ID: " + software.getCommunication() + "\n";
-//        content += "communication_4 " + ":" + " Name: " + software.getCommunication() + "\n";
-//        content += "communication_4 " + ":" + " ID: " + software.getCommunication() + "\n";
-//        content += "communication_5 " + ":" + " Name: " + software.getCommunication() + "\n";
-//        content += "communication_5 " + ":" + " ID: " + software.getCommunication() + "\n";
-//
-//        content += software.getType() + " : " + "ID: " + software.getId() + "\n";
-//        content += software.getType() + " : " + "Name : " + software.getName() + "\n";
-//        content += software.getType() + " : " + "Version: " + software.getVersion() + "\n";
-//        content += software.getType() + " : " + "Os: " + software.getVersion() + "\n";
-//        content += software.getType() + " : " + "IP: " + software.getHardwares() + "\n";
-//
-//        content += software.getType() + " : " + "ID: " + software.getId() + "\n";
-//        content += software.getType() + " : " + "Name : " + software.getName() + "\n";
-//        content += software.getType() + " : " + "Version: " + software.getVersion() + "\n";
-//        content += software.getType() + " : " + "Os: " + software.getVersion() + "\n";
-//        content += software.getType() + " : " + "IP: " + software.getHardwares() + "\n";
-//
-//        content += software.getType() + " : " + "ID: " + software.getId() + "\n";
-//        content += software.getType() + " : " + "Name : " + software.getName() + "\n";
-//        content += software.getType() + " : " + "Version: " + software.getVersion() + "\n";
-//        content += software.getType() + " : " + "Os: " + software.getVersion() + "\n";
-//        content += software.getType() + " : " + "IP: " + software.getHardwares() + "\n";
-//
-//        content += software.getType() + " : " + "ID: " + software.getId() + "\n";
-//        content += software.getType() + " : " + "Name : " + software.getName() + "\n";
-//        content += software.getType() + " : " + "Version: " + software.getVersion() + "\n";
-//        content += software.getType() + " : " + "Os: " + software.getVersion() + "\n";
-//        content += software.getType() + " : " + "IP: " + software.getHardwares() + "\n";
-//
-//        content += software.getType() + " --|>" + "communication_1" + "\n";
-//        content += "communication_1" +  " --|> " + software.getType() + "\n";
-//
-//        content += software.getType() + " --|>" + "communication_2" + "\n";
-//        content += "communication_2" +  " --|> " + software.getType() + "\n";
-//
-//        content += software.getType() + " --|>" + "communication_2" + "\n";
-//        content += "communication_2" +  " --|> " + software.getType() + "\n";
-//
-//        content += software.getType() + " --|>" + "communication_2" + "\n";
-//        content += "communication_2" +  " --|> " + software.getType() + "\n";
-//
-//        content += software.getType() + " --|>" + "communication_2" + "\n";
-//        content += "communication_2" +  " --|> " + software.getType() + "\n";
-
         content += "@enduml";
         return content;
     }
@@ -122,20 +60,19 @@ public class UMLCreator {
             PrintWriter out = new PrintWriter(fileWriter);
             out.append(content);
             out.close();
+
+//            FileOutputStream png = new FileOutputStream(new File("static/images/Test.png"));
+//            SourceStringReader reader = new SourceStringReader(content);
+//            String desc = reader.outputImage(png).getDescription();
         }
 
 
-       public String generatePNGFromPuml(String content) throws FileNotFoundException {
-           FileOutputStream png = new FileOutputStream(new File("static/png/Test.png")) ;
-           SourceStringReader reader = new SourceStringReader(content);
-           String desc = "";
-            try {
-                desc = reader.generateImage(png).toString();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return desc;
-        }
+//       public String generatePNGFromPuml(String content) throws IOException {
+//           FileOutputStream png = new FileOutputStream(new File("static/png/Test.png"));
+//           SourceStringReader reader = new SourceStringReader(content);
+//           String desc = reader.outputImage(png).getDescription();
+//           return desc;
+//       }
 
 
 }

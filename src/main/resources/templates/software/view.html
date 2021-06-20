@@ -11,8 +11,8 @@
     <li th:each="hardware: ${hardwares}" th:text="${hardware.name}"></li>
 </ul>
 
-<p th:unless="${hardwares.size()}"><i>No hardwares yet</i></p>
-<p><a th:href="'/software/add-item/' + ${softwareId}"> Add Hardware</a></p>
+<!--<p th:unless="${hardwares.size()}"><i>No hardwares yet</i></p>-->
+<!--<p><a th:href="'/software/add-item/' + ${softwareId}"> Add Hardware</a></p>-->
 
 <div id="row">
     <div id="column">
@@ -23,7 +23,7 @@
         <button type="button" th:onclick="demo()">Aktualisieren</button>
     </div>
     <div class="column">
-        <img src="/images/IMPAX.png" id="puml">
+        <img src="/static/images/IMPAX.png" id="puml">
     </div>
 
 </div>

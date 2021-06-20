@@ -70,7 +70,7 @@ public class Hardware {
     }
 
     public String getIp() {
-        return ip;
+        return "IP: " + ip;
     }
 
     public void setIp(String ip) {
