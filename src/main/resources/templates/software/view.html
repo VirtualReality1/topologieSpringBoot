@@ -14,13 +14,13 @@
 <p th:unless="${hardwares.size()}"><i>No hardwares yet</i></p>
 <p><a th:href="'/software/add-item/' + ${softwareId}"> Add Hardware</a></p>
 
-<div class="row">
-    <div class="column">
-            <textarea class="form-control" rows="12"
-                      style="margin-top: 10px;" placeholder="Sonstige Bemerkungen"
+<div id="row">
+    <div id="column">
+            <textarea class="form-control" rows="32"
+                      style="margin-top: 10px; width:80%;" placeholder="Sonstige Bemerkungen"
                       name="notes" th:text="${plantuml}">
             </textarea>
-        <button type="button" th:onclick="demo()">Approve</button>
+        <button type="button" th:onclick="demo()">Aktualisieren</button>
     </div>
     <div class="column">
         <img src="/images/IMPAX.png" id="puml">
@@ -29,6 +29,15 @@
 </div>
 
 <p id ="demo"></p>
+
+<script th:inline="javascript">
+
+function demo(){
+location.reload();
+}
+</script>
+
+
 
 </body>
 
