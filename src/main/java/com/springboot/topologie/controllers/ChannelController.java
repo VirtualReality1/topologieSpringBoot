@@ -43,7 +43,7 @@ public class ChannelController {
     }
 
     @RequestMapping(value = "view/{channelId}", method = RequestMethod.GET)
-    public String viewChannel(Model model, @PathVariable int channelId) {
+    public String viewChannel(Model model, @PathVariable Long channelId) {
         Channel channel = channelDao.findById(channelId).orElse(null);
         model.addAttribute("title", channel.getName());
         model.addAttribute("channelId", channel.getId());

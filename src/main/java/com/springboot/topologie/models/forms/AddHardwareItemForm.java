@@ -7,10 +7,10 @@ import javax.validation.constraints.NotNull;
 
 public class AddHardwareItemForm {
     @NotNull
-    private int hardwareId;
+    private Long hardwareId;
 
     @NotNull
-    private int softwareId;
+    private Long softwareId;
 
     private Iterable<Software> softwares;
     private Hardware hardware;
@@ -22,17 +22,17 @@ public class AddHardwareItemForm {
         this.hardware = hardware;
     }
 
-    public int getHardwareId() {
+    public Long getHardwareId() {
         return hardwareId;
     }
 
-    public void setHardwareId(int hardwareId) {
+    public void setHardwareId(Long hardwareId) {
         this.hardwareId = hardwareId;
     }
-    public int getSoftwareId() {
+    public Long getSoftwareId() {
         return softwareId;
     }
-    public void setSoftwareId(int softwareId) {
+    public void setSoftwareId(Long softwareId) {
         this.softwareId = softwareId;
     }
 

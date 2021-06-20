@@ -50,7 +50,7 @@ public class HardwareController {
     }
 
     @RequestMapping (value = "view/{hardwareId}", method = RequestMethod.GET)
-    public String viewHardware(Model model, @PathVariable int hardwareId){
+    public String viewHardware(Model model, @PathVariable Long hardwareId){
         Hardware hardware = hardwareDAO.findById(hardwareId).orElse(null);
         model.addAttribute("title", hardware.getName());
         model.addAttribute("softwares",hardware.getSoftwares());
@@ -59,7 +59,7 @@ public class HardwareController {
     }
 
     @RequestMapping (value= "add-item/{hardwareId}", method = RequestMethod.GET)
-    public String addItem(Model model, @PathVariable int hardwareId){
+    public String addItem(Model model, @PathVariable Long hardwareId){
         Hardware hardware = hardwareDAO.findById(hardwareId).orElse(null);
         AddHardwareItemForm form = new AddHardwareItemForm(
                softwareDAO.findAll(), hardware);

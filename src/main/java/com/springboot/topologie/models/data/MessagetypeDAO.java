@@ -1,12 +1,10 @@
 package com.springboot.topologie.models.data;
 
-import com.springboot.topologie.models.Field;
+
 import com.springboot.topologie.models.Messagetype;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import javax.transaction.Transactional;
 
-@Repository
-@Transactional
-public interface MessagetypeDAO extends CrudRepository<Messagetype,Integer> {}
+@RepositoryRestResource(collectionResourceRel="messagetype",path="messagetype")
+public interface MessagetypeDAO extends JpaRepository<Messagetype,Long> {}

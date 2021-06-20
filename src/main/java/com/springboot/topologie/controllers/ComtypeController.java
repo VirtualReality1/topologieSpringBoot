@@ -50,7 +50,7 @@ public class ComtypeController {
     }
 
     @RequestMapping(value = "view/{comtypeId}", method = RequestMethod.GET)
-    public String viewComtype(Model model, @PathVariable int comtypeId) {
+    public String viewComtype(Model model, @PathVariable Long comtypeId) {
         Comtype comtype = comtypeDao.findById(comtypeId).orElse(null);
         model.addAttribute("title", comtype.getName());
         model.addAttribute("communcations", comtype.getCommunications());
@@ -59,7 +59,7 @@ public class ComtypeController {
     }
 
     @RequestMapping (value= "add-item/{comtypeId}", method = RequestMethod.GET)
-    public String addItem(Model model, @PathVariable int comtypeId){
+    public String addItem(Model model, @PathVariable Long comtypeId){
         Comtype comtype = comtypeDao.findById(comtypeId).orElse(null);
         AddComTypeItemForm form = new AddComTypeItemForm(
                 communicationDAO.findAll(), comtype);

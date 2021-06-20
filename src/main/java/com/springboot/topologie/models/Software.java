@@ -1,5 +1,8 @@
 package com.springboot.topologie.models;
 
+import com.springboot.topologie.models.data.SoftwareDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.persistence.*;
@@ -11,7 +14,7 @@ public class Software {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     @NotNull
     @Size(min = 3, max = 15)
@@ -39,12 +42,9 @@ public class Software {
     @ManyToMany
     private List<Hardware> hardwares;
 
+
     public Software()  {
 
-    }
-
-    private String getSoftwareName() {
-        return name;
     }
 
     public void addItem(Hardware item) {
@@ -53,7 +53,7 @@ public class Software {
         }
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -69,8 +69,7 @@ public class Software {
         return hardwares;
     }
 
-
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -83,6 +82,11 @@ public class Software {
     }
 
     public String getType() {
+        return type;
+    }
+
+    public String getType(int partnerID){
+        if (id == partnerID);
         return type;
     }
 
@@ -116,5 +120,9 @@ public class Software {
 
     public void setHardwares(List<Hardware> hardwares) {
         this.hardwares = hardwares;
+    }
+    @Override
+    public String toString(){
+        return this.type;
     }
 }
