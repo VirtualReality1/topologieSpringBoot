@@ -6,10 +6,10 @@ import javax.validation.constraints.NotNull;
 
 public class AddComTypeItemForm {
     @NotNull
-    private int comtypeId;
+    private Long comtypeId;
 
     @NotNull
-    private int communicationId;
+    private Long communicationId;
 
     private Iterable<Communication> communications;
     private Comtype comtype;
@@ -21,17 +21,17 @@ public class AddComTypeItemForm {
         this.comtype = comtype;
     }
 
-    public int getComtypeId() {
+    public Long getComtypeId() {
         return comtypeId;
     }
 
-    public void setComtypeId(int comtypeId) {
+    public void setComtypeId(Long comtypeId) {
         this.comtypeId = comtypeId;
     }
-    public int getCommunicationId() {
+    public Long getCommunicationId() {
         return communicationId;
     }
-    public void setCommunicationId(int communicationId) {
+    public void setCommunicationId(Long communicationId) {
         this.communicationId = communicationId;
     }
 

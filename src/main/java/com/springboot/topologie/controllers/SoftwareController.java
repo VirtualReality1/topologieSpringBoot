@@ -2,6 +2,8 @@ package com.springboot.topologie.controllers;
 
 import com.springboot.topologie.models.Hardware;
 import com.springboot.topologie.models.Software;
+import com.springboot.topologie.models.UMLCreator;
+import com.springboot.topologie.models.data.CommunicationDAO;
 import com.springboot.topologie.models.data.HardwareDAO;
 import com.springboot.topologie.models.data.SoftwareDAO;
 import com.springboot.topologie.models.forms.AddSoftwareItemForm;
@@ -11,24 +13,41 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping (value = "software")
 public class SoftwareController {
 
-    @Autowired
-    SoftwareDAO softwareDAO;
+    private SoftwareDAO softwareDAO;
+    private HardwareDAO hardwareDAO;
+    private UMLCreator umlCreator;
 
-    @Autowired
-    HardwareDAO hardwareDAO;
+    public SoftwareController(SoftwareDAO softwareDAO, HardwareDAO hardwareDAO, UMLCreator umlCreator) {
+        this.softwareDAO = softwareDAO;
+        this.hardwareDAO = hardwareDAO;
+        this.umlCreator = umlCreator;
+    }
 
-    @RequestMapping (value = "")
+
+    @RequestMapping(value = "")
     public String index(Model model) {
         model.addAttribute("title", "Softwares");
         model.addAttribute("softwares", softwareDAO.findAll());
         return "software/index";
     }
+
+//    @RequestMapping(value ="")
+//    public String index2(Model model) throws IOException {
+//        List<Software> software = softwareDAO.findAll();
+//            String puml = umlCreator.buildContent(software);
+//            umlCreator.generateContentAsPuml(puml);
+//            return puml; // Set Breakpoint for Debugging here to check return in postman
+//    }
 
     @RequestMapping (value = "add", method =RequestMethod.GET)
     public String add(Model model){
@@ -50,7 +69,7 @@ public class SoftwareController {
     }
 
     @RequestMapping (value = "view/{softwareId}", method = RequestMethod.GET)
-    public String viewSoftware(Model model, @PathVariable int softwareId){
+    public String viewSoftware(Model model, @PathVariable Long softwareId){
         Software software = softwareDAO.findById(softwareId).orElse(null);
         model.addAttribute("title", software.getName());
         model.addAttribute("hardwares", software.getHardwares());
@@ -62,7 +81,7 @@ public class SoftwareController {
     }
 
     @RequestMapping (value= "add-item/{softwareId}", method = RequestMethod.GET)
-    public String addItem(Model model, @PathVariable int softwareId){
+    public String addItem(Model model, @PathVariable Long softwareId){
         Software software = softwareDAO.findById(softwareId).orElse(null);
         AddSoftwareItemForm form = new AddSoftwareItemForm(
                 hardwareDAO.findAll(), software);

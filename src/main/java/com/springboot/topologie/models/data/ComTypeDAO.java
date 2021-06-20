@@ -1,10 +1,9 @@
 package com.springboot.topologie.models.data;
 
 import com.springboot.topologie.models.Comtype;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-import javax.transaction.Transactional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@Repository
-@Transactional
-public interface ComTypeDAO extends CrudRepository<Comtype, Integer> {}
+
+@RepositoryRestResource(collectionResourceRel="comtype",path="comtype")
+public interface ComTypeDAO extends JpaRepository<Comtype,Long> {}

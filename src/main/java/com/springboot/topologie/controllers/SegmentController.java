@@ -53,7 +53,7 @@ public class SegmentController {
     }
 
     @RequestMapping (value = "view/{segmentId}", method = RequestMethod.GET)
-    public String viewSegment(Model model, @PathVariable int segmentId){
+    public String viewSegment(Model model, @PathVariable Long segmentId){
         Segment segment = segmentDAO.findById(segmentId).orElse(null);
         model.addAttribute("title", segment.getName());
         model.addAttribute("fields", segment.getFields());
@@ -63,7 +63,7 @@ public class SegmentController {
     }
 
     @RequestMapping (value= "add-item/{segmentId}", method = RequestMethod.GET)
-    public String addItem(Model model, @PathVariable int segmentId){
+    public String addItem(Model model, @PathVariable Long segmentId){
         Segment segment = segmentDAO.findById(segmentId).orElse(null);
         AddSegmentItemForm form = new AddSegmentItemForm(
                 fieldDAO.findAll(), segment);

@@ -47,7 +47,7 @@ public class MessagetypeController {
     }
 
     @RequestMapping(value = "view/{messagetypeId}", method = RequestMethod.GET)
-    public String viewMessagetype(Model model, @PathVariable int messagetypeId) {
+    public String viewMessagetype(Model model, @PathVariable Long messagetypeId) {
         Messagetype messagetype = messagetypeDAO.findById(messagetypeId).orElse(null);
         model.addAttribute("title", messagetype.getName());
         model.addAttribute("messagetypeId", messagetype.getId());

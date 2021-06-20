@@ -9,10 +9,10 @@ import javax.validation.constraints.NotNull;
 
 public class AddFieldItemForm {
     @NotNull
-    private int fieldId;
+    private Long fieldId;
 
     @NotNull
-    private int segmentId;
+    private Long segmentId;
 
     private Iterable<Segment> segments;
     private Field field;
@@ -24,17 +24,17 @@ public class AddFieldItemForm {
         this.field = field;
     }
 
-    public int getFieldId() {
+    public Long getFieldId() {
         return fieldId;
     }
 
-    public void setFieldId(int fieldId) {
+    public void setFieldId(Long fieldId) {
         this.fieldId = fieldId;
     }
-    public int getSegmentId() {
+    public Long getSegmentId() {
         return segmentId;
     }
-    public void setSegmentId(int segmentId) {
+    public void setSegmentId(Long segmentId) {
         this.segmentId = segmentId;
     }
 

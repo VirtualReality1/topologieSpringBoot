@@ -10,7 +10,7 @@ public class Comtype {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     @NotNull
     @Size(min = 3, max = 15)
@@ -20,7 +20,7 @@ public class Comtype {
     @Size(min = 3, max = 15)
     private String type;
 
-    @ManyToMany(mappedBy = "comtypes")
+    @OneToMany(mappedBy = "comtype")
     private List<Communication> communications;
 
     @OneToMany(mappedBy = "comtype")
@@ -31,7 +31,7 @@ public class Comtype {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

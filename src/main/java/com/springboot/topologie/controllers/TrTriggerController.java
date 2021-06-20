@@ -45,7 +45,7 @@ public class TrTriggerController {
     }
 
     @RequestMapping (value = "view/{triggerId}", method = RequestMethod.GET)
-    public String viewTrigger(Model model, @PathVariable int triggerId){
+    public String viewTrigger(Model model, @PathVariable Long triggerId){
         TrTrigger trigger = trTriggerDAO.findById(triggerId).orElse(null);
         model.addAttribute("title", trigger.getName());
         model.addAttribute("triggerId", trigger.getId());

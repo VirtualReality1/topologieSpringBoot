@@ -48,7 +48,7 @@ public class FieldController {
     }
 
     @RequestMapping (value = "view/{fieldId}", method = RequestMethod.GET)
-    public String viewField(Model model, @PathVariable int fieldId){
+    public String viewField(Model model, @PathVariable Long fieldId){
         Field field = fieldDAO.findById(fieldId).orElse(null);
         model.addAttribute("title", field.getName());
         model.addAttribute("segments",field.getSegments());
@@ -66,7 +66,7 @@ public class FieldController {
 //    }
 
     @RequestMapping (value= "add-item/{fieldId}", method = RequestMethod.GET)
-    public String addItem(Model model, @PathVariable int fieldId){
+    public String addItem(Model model, @PathVariable Long fieldId){
         Field field = fieldDAO.findById(fieldId).orElse(null);
         AddFieldItemForm form = new AddFieldItemForm(
                 segmentDAO.findAll(), field);

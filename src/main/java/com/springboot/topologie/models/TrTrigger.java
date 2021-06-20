@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 public class TrTrigger {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @NotNull
     @Size(min=3, max=15)
@@ -23,11 +23,11 @@ public class TrTrigger {
     @OneToOne(mappedBy = "trigger")
     private Communication communication;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

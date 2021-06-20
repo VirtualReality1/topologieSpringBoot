@@ -21,12 +21,18 @@ public class Communication {
     private int partnerSoftwareId;
 
 
-    @ManyToMany
-    private List<Comtype> comtypes;
+    @ManyToOne
+    @JoinColumn(name="comtype_id", referencedColumnName = "id")
+    private Comtype comtype;
 
     @ManyToOne
     @JoinColumn(name="channel_id", referencedColumnName = "id")
     private Channel channel;
+
+    public Messagetype getMessagetype() {
+        return messagetype;
+    }
+
 
     @ManyToOne (optional = true)
     @JoinColumn(name="messagetype_id", referencedColumnName = "id")
@@ -60,15 +66,6 @@ public class Communication {
 
     public Communication () {}
 
-    public void addItem(Comtype item) {
-        if(!comtypes.contains(item)){
-            comtypes.add(item);
-        }
-    }
-
-    public List<Comtype> getComtypes() {
-        return comtypes;
-    }
 
     public int getPartnerSoftwareId() {
         return partnerSoftwareId;

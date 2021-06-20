@@ -10,7 +10,7 @@ public class Field {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     @NotNull
     @Size(min = 3, max = 15)
@@ -35,7 +35,7 @@ public class Field {
         }
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
