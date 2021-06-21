@@ -82,12 +82,13 @@ public class SoftwareController {
         Software software = softwareDAO.findById(softwareId).orElse(null);
         model.addAttribute("title", software.getName());
         model.addAttribute("hardwares", software.getHardwares());
+        model.addAttribute("communications", software.getCommunication());
         model.addAttribute("softwareId", software.getId());
         // model
         String content =  umlCreator.buildContent(softwareList);
-        umlCreator.generateContentAsPuml(content);
+        umlCreator.generateContentAsPuml(content, softwareList);
         model.addAttribute("plantuml", content);
-      //  umlCreator.generatePNGFromPuml(content);
+        //umlCreator.generatePNGFromPuml(content);
         return "software/view";
     }
 
