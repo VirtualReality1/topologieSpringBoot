@@ -59,4 +59,9 @@ public class Channel {
     public void setCommunication(List<Communication> communication) {
         this.communication = communication;
     }
+
+    @Override
+    public String toString(){
+        return this.name;
+    }
 }

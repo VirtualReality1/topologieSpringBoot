@@ -16,10 +16,6 @@ public class Comtype {
     @Size(min = 3, max = 15)
     private String name;
 
-    @NotNull
-    @Size(min = 3, max = 15)
-    private String type;
-
     @OneToMany(mappedBy = "comtype")
     private List<Communication> communications;
 
@@ -48,8 +44,12 @@ public class Comtype {
     }
 
     public void addItem(Communication item) {
-        if(!communications.contains(item)){
+        if(!communications.contains(item)) {
             communications.add(item);
         }
+    }
+    @Override
+    public String toString(){
+        return this.name;
     }
 }

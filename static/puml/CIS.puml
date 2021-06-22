@@ -1,0 +1,60 @@
+@startuml
+object KommServer
+object CMS
+CMS : ID : 2
+CMS : Name: Hydmedia
+CMS : Version :15
+CMS : OS: Windows Server 2020
+CMS : IP: 172.17.233.138
+object communication_1
+communication_1 : Name : MDM
+communication_1 : ID : 0
+communication_1 : Channel : FTP
+communication_1 : Comtype : HL7 v2
+KommServer --|> communication_1:Bildgebungsauftrag
+communication_1 --|> CMS
+object LIS
+LIS : ID : 1
+LIS : Name: IXSERV
+LIS : Version :1,5
+LIS : OS: Windows Server 2020
+LIS : IP: 172.17.233.138
+object communication_2
+communication_2 : Name : MDM
+communication_2 : ID : 1
+communication_2 : Channel : HTTP
+communication_2 : Comtype : HL7 v3
+KommServer --|> communication_2:Bluttransfusion
+communication_2 --|> LIS
+object CIS
+CIS : ID : 3
+CIS : Name: Cardiobase
+CIS : Version :8
+CIS : OS: Windows Server 2020
+CIS : IP: 172.17.233.138
+object communication_4
+communication_4 : Name : ADT
+communication_4 : ID : 3
+communication_4 : Channel : HTTP
+communication_4 : Comtype : HL7 v3
+KommServer --|> communication_4:Patientenentlassung
+communication_4 --|> CIS
+object AIS
+AIS : ID : 7
+AIS : Name: Maris
+AIS : Version :8
+AIS : OS: Windows
+AIS : IP: 172.17.233.138
+object communication_9
+communication_9 : Name : ADT
+communication_9 : ID : 8
+communication_9 : Channel : HTTP
+communication_9 : Comtype : HL7 v3
+KommServer --|> communication_9:Patientenaufnahme
+communication_9 --|> AIS
+KommServer : ID : 0
+KommServer : Name: Mirth
+KommServer : Version :2.0
+KommServer : OS: Windows Server 2020
+KommServer : IP: 172.17.233.138
+@enduml

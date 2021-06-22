@@ -80,4 +80,20 @@ public class Communication {
     public Long getPartnerSoftwareId() {
         return partnerSoftwareId;
     }
+
+    public Comtype getComtype() {
+        return comtype;
+    }
+
+    public Channel getChannel() {
+        return channel;
+    }
+
+    public Software getSoftware() {
+        return software;
+    }
+
+    public TrTrigger getTrigger() {
+        return trigger;
+    }
 }

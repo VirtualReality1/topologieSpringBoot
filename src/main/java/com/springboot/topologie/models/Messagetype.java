@@ -48,4 +48,11 @@ public class Messagetype {
         return this.name;
     }
 
+    public List<Segment> getSegment() {
+        return segment;
+    }
+
+    public List<Communication> getCommunication() {
+        return communication;
+    }
 }
