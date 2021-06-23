@@ -1,0 +1,7 @@
+@startuml
+object AIS
+AIS : ID : 7
+AIS : Name: Maris
+AIS : Version :8
+AIS : OS: Windows
+@enduml

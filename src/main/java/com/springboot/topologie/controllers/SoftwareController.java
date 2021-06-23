@@ -85,11 +85,11 @@ public class SoftwareController {
         model.addAttribute("communications", software.getCommunication());
         model.addAttribute("softwareId", software.getId());
         // model
-        List <String> content =  umlCreator.buildContent(softwareList);
+        //List <String> content =  umlCreator.buildContent(softwareList);
 
+        umlCreator.generateContentAsPuml(softwareList);
 
-        umlCreator.generateContentAsPuml(content.get(0), softwareList);
-        model.addAttribute("plantuml", content);
+      //  model.addAttribute("plantuml", content);
         //umlCreator.generatePNGFromPuml(content);
         return "software/view";
     }

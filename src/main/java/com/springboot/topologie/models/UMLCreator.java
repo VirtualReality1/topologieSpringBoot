@@ -26,21 +26,17 @@ public class UMLCreator {
         this.softwareDAO = softwareDAO;
     }
 
-    public List<String> buildContent(List<Software> software) {
+    public String buildContent(Software s) {
 
-        List<String> contentList = new ArrayList<String>();
-
-          for (Software s : software) {
               String content = "@startuml\n";
               content += "object " + s.getType() + "\n";
 
-
               for (Communication c : s.getCommunication()) {
-
                   Software partnerSoftware = softwareDAO.findById(c.getPartnerSoftwareId()).get();
-                  content += "object "+ partnerSoftware.getType() + "\n";
 
-                  //partner software content
+                      content += "object "+ partnerSoftware.getType() + "\n";
+
+                    //partner software content
 
                   content += partnerSoftware.getType() + " : ID : " + partnerSoftware.getId() + "\n";
                   content += partnerSoftware.getType() + " : " + partnerSoftware.getName() + "\n";
@@ -65,6 +61,9 @@ public class UMLCreator {
                   content += s.getType() + " --|> " + c.getName() +":" + c.getTrigger() + "\n";
                   content += c.getName() + " --|> " + partnerSoftware.getType() + "\n";
 
+                  content += s.getType() + " <|-- " + c.getName() +":" + c.getTrigger() + "\n";
+                  content += c.getName() + " <|-- " + partnerSoftware.getType() + "\n";
+
                  // content += partnerSoftware.getType() + " --|> " + s.getType() + "\n";
               }
 
@@ -80,27 +79,39 @@ public class UMLCreator {
 
 
               content += "@enduml";
-              contentList.add(content);
-          }
 
-        return contentList;
+        return content;
     }
+//
+//        public void generateContentAsPuml(String content, List<Software> software) throws IOException {
+//        for(Software s : software ){
+//                FileWriter fileWriter = new FileWriter("static/puml/" + s.getType() + ".puml");
+//                PrintWriter out = new PrintWriter(fileWriter);
+//                out.append(content);
+//                out.close();
+//
+//                FileOutputStream png = new FileOutputStream(new File("static/png/" + s.getType() + ".png"));
+//                SourceStringReader reader = new SourceStringReader(content);
+//                String desc = reader.outputImage(png).getDescription();
+//            }
+//        }
 
-        public void generateContentAsPuml(String content, List<Software> software) throws IOException {
+    public void generateContentAsPuml(List<Software> software) throws IOException {
+
         for(Software s : software ){
-            for (Communication c : s.getCommunication()) {
-                FileWriter fileWriter = new FileWriter("static/puml/" + s.getType() + ".puml");
-                PrintWriter out = new PrintWriter(fileWriter);
-                out.append(content);
-                out.close();
+            String content = buildContent(s);
+            FileWriter fileWriter = new FileWriter("static/puml/" + s.getType() + ".puml");
+            PrintWriter out = new PrintWriter(fileWriter);
+            out.append(content);
+            out.close();
 
-                FileOutputStream png = new FileOutputStream(new File("static/png/" + s.getType() + ".png"));
-                SourceStringReader reader = new SourceStringReader(content);
-                String desc = reader.outputImage(png).getDescription();
-            }
+            FileOutputStream png = new FileOutputStream(new File("static/png/" + s.getType() + ".png"));
+            SourceStringReader reader = new SourceStringReader(content);
+            String desc = reader.outputImage(png).getDescription();
         }
+    }
        }
-}
+
 
 //       public String generatePNGFromPuml(String content) throws IOException {
 //           FileOutputStream png = new FileOutputStream(new File("static/png/CIS.png"));

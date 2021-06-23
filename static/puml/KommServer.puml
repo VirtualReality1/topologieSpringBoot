@@ -13,7 +13,8 @@ communication_1 : Channel : FTP
 communication_1 : Comtype : HL7 v2
 KommServer --|> communication_1:Bildgebungsauftrag
 communication_1 --|> CMS
-object LIS
+KommServer <|-- communication_1:Bildgebungsauftrag
+communication_1 <|-- CMS
 LIS : ID : 1
 LIS : Name: IXSERV
 LIS : Version :1,5
@@ -26,7 +27,8 @@ communication_2 : Channel : HTTP
 communication_2 : Comtype : HL7 v3
 KommServer --|> communication_2:Bluttransfusion
 communication_2 --|> LIS
-object CIS
+KommServer <|-- communication_2:Bluttransfusion
+communication_2 <|-- LIS
 CIS : ID : 3
 CIS : Name: Cardiobase
 CIS : Version :8
@@ -39,7 +41,8 @@ communication_4 : Channel : HTTP
 communication_4 : Comtype : HL7 v3
 KommServer --|> communication_4:Patientenentlassung
 communication_4 --|> CIS
-object AIS
+KommServer <|-- communication_4:Patientenentlassung
+communication_4 <|-- CIS
 AIS : ID : 7
 AIS : Name: Maris
 AIS : Version :8
@@ -52,6 +55,8 @@ communication_9 : Channel : HTTP
 communication_9 : Comtype : HL7 v3
 KommServer --|> communication_9:Patientenaufnahme
 communication_9 --|> AIS
+KommServer <|-- communication_9:Patientenaufnahme
+communication_9 <|-- AIS
 KommServer : ID : 0
 KommServer : Name: Mirth
 KommServer : Version :2.0
