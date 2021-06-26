@@ -9,5 +9,16 @@
 </ul>
 <p th:unless = "${softwares.size()}"><i>No softwares yet</i></p>
 <p><a th:href="'/hardware/add-item/' + ${hardwareId}"> Add Software</a></p>
+
+<table>
+    <th:block th:each="software : ${softwares}">
+        <tr>
+            <td th:text="${software.name}">...</td>
+            <td th:text="${software.ip}">...</td>
+        </tr>
+        <img th:src="@{/png/${software.name}.png}" width="800px" id="puml">
+    </th:block>
+</table>
+
 </body>
 </html>

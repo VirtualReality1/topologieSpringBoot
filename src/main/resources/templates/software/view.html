@@ -1,46 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
-    <script type="text/javascript" th:src="/js/actions.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="/js/my_script.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link th:href="/css/styles.css" rel="stylesheet" />
+
+    <style type="text/css">
+</style>
+</style>
 </head>
 <body class="container">
 <h1 th:text="${title}"> Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
-<h3>Server: </h3>
-<ul>
-    <li th:each="hardware: ${hardwares}" th:text="${hardware.name}"></li>
-    <li th:each="hardware: ${hardwares}" th:text="${hardware.ip}"></li>
-</ul>
 
-<!--<p th:unless="${hardwares.size()}"><i>No hardwares yet</i></p>-->
-<!--<p><a th:href="'/software/add-item/' + ${softwareId}"> Add Hardware</a></p>-->
+<script src="script/jquery-3.6.0.min.js"></script>
 
-<div id="row">
-    <div id="column">
-            <textarea class="form-control" rows="32"
-                      style="margin-top: 10px; width:80%;" placeholder="Sonstige Bemerkungen"
-                      name="notes" th:text="${plantuml}">
-            </textarea>
-        <button type="button" th:onclick="demo()">Aktualisieren</button>
+<div th:each="iter : ${path}">
+    <div class="gallery">
+        <a target="_blank" th:href="${iter}">
+            <img th:src="${iter}" width="500px" height="500px">
+        </a>
+
     </div>
-    <div class="column">
-        <img th:src="@{/png/KommServer.png}" width="800px" id="puml">
-    </div>
+
+
+
+
 </div>
-
-<p id ="demo"></p>
-
-<script th:inline="javascript">
-
-function demo(){
-location.reload();
-}
-</script>
-
 
 
 </body>
-
 
 </html>

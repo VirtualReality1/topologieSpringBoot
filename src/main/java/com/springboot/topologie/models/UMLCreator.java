@@ -105,6 +105,7 @@ public class UMLCreator {
             out.append(content);
             out.close();
 
+
             FileOutputStream png = new FileOutputStream(new File("static/png/" + s.getType() + ".png"));
             SourceStringReader reader = new SourceStringReader(content);
             String desc = reader.outputImage(png).getDescription();

@@ -9,16 +9,29 @@ import com.springboot.topologie.models.data.HardwareDAO;
 import com.springboot.topologie.models.data.SoftwareDAO;
 import com.springboot.topologie.models.forms.AddSoftwareItemForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StreamUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.io.IOUtils;
 
 @Controller
 @RequestMapping (value = "software")
@@ -86,6 +99,18 @@ public class SoftwareController {
         model.addAttribute("softwareId", software.getId());
         // model
         //List <String> content =  umlCreator.buildContent(softwareList);
+        File f = new File("static/png");
+        ArrayList<File> files = new ArrayList<File>(Arrays.asList(f.listFiles()));
+        ArrayList<String> path = new ArrayList<String>();
+        files.forEach(s -> path.add(s.toString().substring(6)));
+        String test = "test";
+        Pattern p = Pattern.compile("\\\\");
+        for (int i = 0; i < path.size(); i++) {
+            Matcher matcher = p.matcher(path.get(i));
+            path.set(i, matcher.replaceAll("/"));
+        }
+        model.addAttribute("path", path);
+        model.addAttribute("test", test.replace("e","a"));
 
         umlCreator.generateContentAsPuml(softwareList);
 
@@ -93,6 +118,10 @@ public class SoftwareController {
         //umlCreator.generatePNGFromPuml(content);
         return "software/view";
     }
+
+
+
+
 
     @RequestMapping (value= "add-item/{softwareId}", method = RequestMethod.GET)
     public String addItem(Model model, @PathVariable Long softwareId){
@@ -104,6 +133,7 @@ public class SoftwareController {
         model.addAttribute("form", form);
         return "software/add-item";
     }
+
 
     @RequestMapping (value = "add-item", method = RequestMethod.POST)
     public String addItem(Model model, @ModelAttribute @Valid AddSoftwareItemForm form, Errors errors){
