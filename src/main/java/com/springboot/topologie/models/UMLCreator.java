@@ -82,13 +82,7 @@ public class UMLCreator {
                 //content += c.getName() + " : Trigger : " + c.getTrigger() + "\n";
 
                 // communication from sender to receiver
-                if (c.getTrigger() == null) {
 
-                    content += s.getType() + " --|> " + c.getName() + "\n";
-                } else {
-                    content += s.getType() + " --|> " + c.getName() + ":" + c.getTrigger() + "\n";
-                }
-                content += c.getName() + " --|> " + partnerSoftware.getType() + "\n";
 
                 if (!(alreadythere.contains(c)  && alreadythere.contains(ce))) {
                     content += "object " + ce.getName() + "\n";
@@ -105,6 +99,23 @@ public class UMLCreator {
                 // content += c.getName() + " <|-- " + partnerSoftware.getType() + "\n";
                 alreadythere.add(ce);
             }
+            if (c.getTrigger() == null && !alreadythere.contains(c)) {
+                content += "object " + c.getName() + "\n";
+                content += c.getName() + " : Name : " + c.getMessagetype().toString() + "\n";
+                content += c.getName() + " : ID : " + c.getId() + "\n";
+                content += c.getName() + " : Channel : " + c.getChannel() + "\n";
+                content += c.getName() + " : Comtype : " + c.getComtype() + "\n";
+
+            } else {
+                if (!alreadythere.contains(c)){
+                    content += "object " + c.getName() + "\n";
+                    content += c.getName() + " : ID : " + c.getId() + "\n";
+                    content += c.getName() + " : Channel : " + c.getChannel() + "\n";
+                    content += c.getName() + " : Comtype : " + c.getComtype() + "\n";
+                }
+                content += s.getType() + " --|> " + c.getName() + ":" + c.getTrigger() + "\n";
+            }
+            content += c.getName() + " --|> " + partnerSoftware.getType() + "\n";
             }
 
 
