@@ -3,7 +3,6 @@ package com.springboot.topologie.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @Table(name = "communication")
@@ -32,9 +31,7 @@ public class Communication {
     @JoinColumn(name="channel_id", referencedColumnName = "id")
     private Channel channel;
 
-    public Messagetype getMessagetype() {
-        return messagetype;
-    }
+
 
 
     @ManyToOne (optional = true)
@@ -83,6 +80,10 @@ public class Communication {
 
     public Comtype getComtype() {
         return comtype;
+    }
+
+    public Messagetype getMessagetype() {
+        return messagetype;
     }
 
     public Channel getChannel() {

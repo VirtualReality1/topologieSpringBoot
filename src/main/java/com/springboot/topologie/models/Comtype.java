@@ -16,6 +16,8 @@ public class Comtype {
     @Size(min = 3, max = 15)
     private String name;
 
+
+
     @OneToMany(mappedBy = "comtype")
     private List<Communication> communications;
 

@@ -16,10 +16,6 @@ public class Field {
     @Size(min = 3, max = 15)
     private String name;
 
-    @NotNull
-    @Size(min = 3, max = 15)
-    private String content;
-
     @ManyToMany (mappedBy = "fields")
     private List<Segment> segments;
 

@@ -50,6 +50,7 @@ public class TopologieController {
     @RequestMapping(value = "")
     public String index(Model model) throws IOException {
         List<Software> softwareList = softwareDAO.findAll();
+
         File f = new File("static/png");
         ArrayList<File> files = new ArrayList<File>(Arrays.asList(f.listFiles()));
         ArrayList<String> path = new ArrayList<String>();

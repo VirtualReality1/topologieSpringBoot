@@ -10,7 +10,7 @@ public class Messagetype {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     @NotNull
     @Size(min = 3, max = 15)
@@ -31,7 +31,7 @@ public class Messagetype {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
