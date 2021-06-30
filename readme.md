@@ -25,6 +25,8 @@ Zudem muss eine leere Datenbank mit dem Namen "topologie" erstellt werden. Für 
 Gusto zu benennen ist dies auch möglich. Allerdings muss dafür in der Datei "application.properties" im
 Java Programm der Name der sql Datenbank auf den selbstgewählten geändert werden.
 
+In der Projektstruktur ist eine Grundlegende Datenbank (topologie.sql) eingebunden, welche genutzt werden kann, um sich einen ersten Eindruck der Anwendung zu machen. Diese kann in der Datenbank unter dem Punkt Importieren (PhpMyGenerator) eingebunden werden.
+
 #### Vorbereitung PHP-Generator
 Die "Topologie_PHP" Datei sorgt dafür, die Daten einfach in der Datenbank persistieren zu können. Die Webansicht
 kann geöffnet werden, in dem man im Browser den Pfad _**localhost/topologie/start.html**_ angibt. 
@@ -53,7 +55,7 @@ Eventuell ist eine Column nicht erstellt worden, welche vom Spring Framework jed
 in der Console ausgelesen werden.</li>
 <li> Probleme beim Hinzufügen von Software Objekten / Kommunicationsobjekten: Hier scheint es sich um einen Bug im
 PHP MyGenerator zu handeln. Dieser schlüsselt aus uns unbekannten Gründen nicht den Namen der Software, sondern den Namen des Operation Systems auf.
-Daher ist eine Zuordnung zur Software nicht möglich. Eventuell lässt sich dies einfach beheben, durch ein Upgrade auf PHP Generator Pro (Für unschlagbare 249$).</li>
+Daher ist eine Zuordnung zur Software nicht möglich. Eventuell lässt sich dies einfach beheben, durch ein Upgrade auf PHP Generator Pro (Für unschlagbare 249$). Daher wird empfohlen hierfür auf die SQL-Insert-Funktion des PhpMyAdmin zurückzugreifen. Diese ist verfügbar unter localhost/phpmyadmin.</li>
 <li>Autoinkrementierung der einzelnen Tabellen: Die Autoinkrementierung kann aus ebenso unerfindlichen Gründen nicht nachträglich eingestellt werden für die Primary Keys.
 im Falle einer Neufüllung der Datenbank wird empfohlen die Tabellen zunächst auf AI zu überprüfen und erst danach zu befüllen. Andernfalls hat man mit vielen Constraints und Abhängigkeiten zu kämpfen.</li>
 <li>Xampp nicht gestartet: Führt dazu, dass die Datenbank nicht gefunden werden kann. Java Anwendung und PHP-Seite werfen einen Fehler.</li>
