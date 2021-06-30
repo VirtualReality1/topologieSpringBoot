@@ -1,0 +1,7 @@
+@startuml
+object CMS
+CMS : ID : 2
+CMS : Name: Hydmedia
+CMS : Version :3.6
+CMS : OS: Microsoft Windows Embedded
+@enduml

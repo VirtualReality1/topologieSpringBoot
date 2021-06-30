@@ -1,5 +1,8 @@
 package com.springboot.topologie.models;
 
+import com.springboot.topologie.models.data.SoftwareDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.persistence.*;
@@ -11,7 +14,7 @@ public class Software {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     @NotNull
     @Size(min = 3, max = 15)
@@ -20,6 +23,10 @@ public class Software {
     @NotNull
     @Size(min = 3, max = 15)
     private String version;
+
+    @NotNull
+    @Size(min = 3, max = 15)
+    private String type;
 
     @NotNull
     @Size(min = 3, max = 15)
@@ -35,7 +42,9 @@ public class Software {
     @ManyToMany
     private List<Hardware> hardwares;
 
-    public Software() {
+
+    public Software()  {
+
     }
 
     public void addItem(Hardware item) {
@@ -44,13 +53,18 @@ public class Software {
         }
     }
 
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     public String getName() {
-        return name;
+
+        return "Name: "+ name;
+    }
+
+    public String getPumlName() {
+        return "object : "
+                + name;
     }
 
     public void setName(String name) {
@@ -61,5 +75,59 @@ public class Software {
         return hardwares;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getVersion() {
+        return "Version :" + version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getType(int partnerID){
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getOsName() {
+        return "OS: " + OsName;
+    }
+
+    public void setOsName(String osName) {
+        OsName = osName;
+    }
+
+    public String getOsVersion() {
+        return OsVersion;
+    }
+
+    public void setOsVersion(String osVersion) {
+        OsVersion = osVersion;
+    }
+
+    public List<Communication> getCommunication() {
+        return communication;
+    }
+
+    public void setCommunication(List<Communication> communication) {
+        this.communication = communication;
+    }
+
+    public void setHardwares(List<Hardware> hardwares) {
+        this.hardwares = hardwares;
+    }
+    @Override
+    public String toString(){
+        return this.type;
+    }
 }

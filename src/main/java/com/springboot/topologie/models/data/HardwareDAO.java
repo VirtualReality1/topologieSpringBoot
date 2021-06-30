@@ -1,11 +1,8 @@
 package com.springboot.topologie.models.data;
 
 import com.springboot.topologie.models.Hardware;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import javax.transaction.Transactional;
-
-@Repository
-@Transactional
-public interface HardwareDAO extends CrudRepository<Hardware,Integer> {}
+@RepositoryRestResource(collectionResourceRel="hardware",path="hardware")
+public interface HardwareDAO extends JpaRepository<Hardware,Long> {}

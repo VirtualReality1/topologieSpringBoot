@@ -3,11 +3,12 @@ package com.springboot.topologie.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @Table(name = "communication")
 public class Communication {
+  //  private Software partner;
+
     @Id
     @GeneratedValue
     private Long id;
@@ -18,15 +19,20 @@ public class Communication {
 
     @NotNull
     @Size(min=3, max=15)
-    private int partnerSoftwareId;
+    private Long partnerSoftwareId;
 
 
-    @ManyToMany
-    private List<Comtype> comtypes;
+
+    @ManyToOne
+    @JoinColumn(name="comtype_id", referencedColumnName = "id")
+    private Comtype comtype;
 
     @ManyToOne
     @JoinColumn(name="channel_id", referencedColumnName = "id")
     private Channel channel;
+
+
+
 
     @ManyToOne (optional = true)
     @JoinColumn(name="messagetype_id", referencedColumnName = "id")
@@ -60,17 +66,35 @@ public class Communication {
 
     public Communication () {}
 
-    public void addItem(Comtype item) {
-        if(!comtypes.contains(item)){
-            comtypes.add(item);
-        }
-    }
+//    public void setPartner(Software partner){
+//        this.partner = partner;
+//    }
+//
+//    public Software getPartner(){
+//        return this.partner;
+//    }
 
-    public List<Comtype> getComtypes() {
-        return comtypes;
-    }
-
-    public int getPartnerSoftwareId() {
+    public Long getPartnerSoftwareId() {
         return partnerSoftwareId;
+    }
+
+    public Comtype getComtype() {
+        return comtype;
+    }
+
+    public Messagetype getMessagetype() {
+        return messagetype;
+    }
+
+    public Channel getChannel() {
+        return channel;
+    }
+
+    public Software getSoftware() {
+        return software;
+    }
+
+    public TrTrigger getTrigger() {
+        return trigger;
     }
 }

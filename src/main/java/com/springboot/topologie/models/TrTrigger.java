@@ -10,24 +10,20 @@ import javax.validation.constraints.Size;
 public class TrTrigger {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @NotNull
     @Size(min=3, max=15)
     private String name;
 
-    @NotNull
-    @Size(min=3, max=15)
-    private String action;
-
     @OneToOne(mappedBy = "trigger")
     private Communication communication;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,19 +37,16 @@ public class TrTrigger {
 
     public TrTrigger(){}
 
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
     public Communication getCommunication() {
         return communication;
     }
 
     public void setCommunication(Communication communication) {
         this.communication = communication;
+    }
+
+    @Override
+    public String toString(){
+        return this.name;
     }
 }

@@ -10,7 +10,7 @@ public class Hardware {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     @NotNull
     @Size(min = 3, max = 15)
@@ -19,10 +19,6 @@ public class Hardware {
     @NotNull
     @Size(min = 3, max = 15)
     private String version;
-
-    @NotNull
-    @Size(min = 3, max = 15)
-    private String type;
 
     @NotNull
     @Size(min = 3, message = "IP must not be empty")
@@ -45,7 +41,7 @@ public class Hardware {
         }
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -61,7 +57,7 @@ public class Hardware {
         return softwares;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -73,16 +69,8 @@ public class Hardware {
         this.version = version;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getIp() {
-        return ip;
+        return "IP: " + ip;
     }
 
     public void setIp(String ip) {

@@ -1,11 +1,9 @@
 package com.springboot.topologie.models.data;
 
 import com.springboot.topologie.models.Field;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import javax.transaction.Transactional;
 
-@Repository
-@Transactional
-public interface FieldDAO extends CrudRepository<Field,Integer> {}
+@RepositoryRestResource(collectionResourceRel="field",path="field")
+public interface FieldDAO extends JpaRepository<Field,Long> {}

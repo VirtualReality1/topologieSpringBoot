@@ -10,15 +10,11 @@ public class Field {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     @NotNull
     @Size(min = 3, max = 15)
     private String name;
-
-    @NotNull
-    @Size(min = 3, max = 15)
-    private String content;
 
     @ManyToMany (mappedBy = "fields")
     private List<Segment> segments;
@@ -35,7 +31,7 @@ public class Field {
         }
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

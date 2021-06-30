@@ -1,0 +1,77 @@
+@startuml
+object LMS
+object KommServer
+KommServer : ID : 0
+KommServer : Name: Mirth
+KommServer : Version :2.0
+KommServer : OS: Windows Server 2020
+KommServer : IP: 172.17.233.138
+KommServer : Server:  V-BIT-MIR-0001
+object CMS
+CMS : ID : 2
+CMS : Name: Hydmedia
+CMS : Version :3.6
+CMS : OS: Microsoft Windows Embedded
+object communication_6
+communication_6 : Name : ORU
+communication_6 : ID : 5
+communication_6 : Channel : HTTP
+communication_6 : Comtype : HL7 v3
+object communiction_1
+communiction_1 : Name : MDM
+communiction_1 : ID : 0
+communiction_1 : Channel : FTP
+communiction_1 : Comtype : HL7 v2
+KommServer --|> communiction_1
+communiction_1 --|> CMS
+communiction_1 : Segment : MSH
+object LIS
+LIS : ID : 1
+LIS : Name: IXSERV
+LIS : Version :1,5
+LIS : OS: Windows Server 2020
+LIS : IP: 172.17.233.136
+LIS : Server: ixserv_cardio
+object communication_2
+communication_2 : Name : MDM
+communication_2 : ID : 1
+communication_2 : Channel : HTTP
+communication_2 : Comtype : HL7 v3
+KommServer --|> communication_2
+communication_2 --|> LIS
+communication_2 : Segment : MSH
+object CIS
+CIS : ID : 3
+CIS : Name: Cardiobase
+CIS : Version :8
+CIS : OS: Windows Server 2020
+CIS : IP: 172.17.233.30
+CIS : Server: Cardiobase_SERVER
+object communication_4
+communication_4 : Name : ADT
+communication_4 : ID : 3
+communication_4 : Channel : HTTP
+communication_4 : Comtype : HL7 v3
+KommServer --|> communication_4
+communication_4 --|> CIS
+communication_4 : Segment : EVN
+object AIS
+AIS : ID : 7
+AIS : Name: Maris
+AIS : Version :8
+AIS : OS: Windows
+object communication_9
+communication_9 : Name : ADT
+communication_9 : ID : 8
+communication_9 : Channel : HTTP
+communication_9 : Comtype : HL7 v3
+KommServer --|> communication_9
+communication_9 --|> AIS
+communication_9 : Segment : EVN
+LMS --|> communication_6
+communication_6 --|> KommServer
+LMS : ID : 4
+LMS : Name: OPUS::L/BIT
+LMS : Version :8
+LMS : OS: Windows
+@enduml

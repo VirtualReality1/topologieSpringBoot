@@ -1,11 +1,12 @@
 package com.springboot.topologie.models.data;
 
 import com.springboot.topologie.models.Segment;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
-@Repository
-@Transactional
-public interface SegmentDAO extends CrudRepository<Segment,Integer> {}
+@RepositoryRestResource(collectionResourceRel="segment",path="segment")
+public interface SegmentDAO extends JpaRepository<Segment,Long> {
+    List<Segment> findByMessagetype_id (Long id);
+}

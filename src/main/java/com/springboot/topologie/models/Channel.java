@@ -10,7 +10,7 @@ public class Channel {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     @NotNull
     @Size(min = 3, max = 15)
@@ -28,7 +28,7 @@ public class Channel {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -40,7 +40,7 @@ public class Channel {
         this.name = name;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -58,5 +58,10 @@ public class Channel {
 
     public void setCommunication(List<Communication> communication) {
         this.communication = communication;
+    }
+
+    @Override
+    public String toString(){
+        return this.name;
     }
 }
