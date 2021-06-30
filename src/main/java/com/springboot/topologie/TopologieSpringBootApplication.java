@@ -10,8 +10,5 @@ public class TopologieSpringBootApplication {
 
     public static void main(String[] args) throws IOException {
         SpringApplication.run(TopologieSpringBootApplication.class, args);
-//        UMLCreator umlCreator = new UMLCreator();
-//       umlCreator.buildContent(new Software());
-//       umlCreator.generateContentAsPuml();
     }
 }
