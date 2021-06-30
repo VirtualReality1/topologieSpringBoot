@@ -1,7 +1,5 @@
 package com.springboot.topologie;
 
-import com.springboot.topologie.models.Software;
-import com.springboot.topologie.models.UMLCreator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

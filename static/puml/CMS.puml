@@ -2,7 +2,6 @@
 object CMS
 CMS : ID : 2
 CMS : Name: Hydmedia
-CMS : Version :15
-CMS : OS: Windows Server 2020
-CMS : IP: 172.17.233.60
+CMS : Version :3.6
+CMS : OS: Microsoft Windows Embedded
 @enduml

@@ -1,37 +1,21 @@
 package com.springboot.topologie.controllers;
 
-import com.springboot.topologie.models.Communication;
-import com.springboot.topologie.models.Hardware;
 import com.springboot.topologie.models.Software;
-import com.springboot.topologie.models.UMLCreator;
-import com.springboot.topologie.models.data.CommunicationDAO;
+import com.springboot.topologie.services.UMLCreator;
 import com.springboot.topologie.models.data.HardwareDAO;
 import com.springboot.topologie.models.data.SoftwareDAO;
-import com.springboot.topologie.models.forms.AddSoftwareItemForm;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StreamUtils;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 
-import javax.persistence.EntityNotFoundException;
-import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.apache.commons.io.IOUtils;
 
 @Controller
 @RequestMapping (value = "topologie")
