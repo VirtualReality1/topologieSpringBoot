@@ -17,7 +17,7 @@ welche sich im Ordner "lib" befindet. Diese muss manuell über die Projektstrukt
 über File -> Project Structure manuell die Library hinzugefügt werden.
 
 In einer zweiten ZIP-Datei mit Namen "Topologie_PHP" befindet sich ein PHP-Generator Project, welches nachdem es ausgepackt wurde simple
-in PHP Generator importiert werden kann.
+in PHP Generator importiert werden kann. Im Ordner xampp/htdocs/topologie muss die start.html noch eingebunden werden.
 
 #### Datenbank anlegen
 Bevor die Anwendung nun gestartet werden kann, muss sichergestellt werden, dass in XAMPP Apache und MySQL gestartet sind.
